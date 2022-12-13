@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Doctors</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                font-family: sans-serif;
+                background: #F56EB3;
+                box-sizing: border-box;
+            }
+
+            ul {
+                margin-right: 100px;
+            }
+            .main-container {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+            } 
+
+            form {
+                background: #fff;
+                width: 600px;
+                height: 55px;
+                display: flex;
+            }
+
+            form input {
+                flex: 1;
+                border: 1px medium dashed green;
+                outline: none;
+                background: white;
+            }
+
+            form button {
+                {% comment %} background: #D09CFA; {% endcomment %}
+                background: #F56EB3;
+                padding: 10px 50px;
+                border: none;
+                outline: none;
+                color: #fff;
+                letter-spacing: 1px;
+                cursor: pointer;
+            }
+
+        </style>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <script src="https://kit.fontawesome.com/e7253bb480.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="main-container">
+            <div>
+                <ul>
+                    {% for doctor in doctors %}
+                    <p class="filling">Doctor Name : {{doctor.name}}</p>
+                    <p class="filling">Speciality : {{doctor.speciality}}</p>
+                    <p class="filling">Experiance : {{doctor.experiance}} Years</p>
+                    <p class="filling">Consultation Fees : {{doctor.fees}} /-</p>
+                    <p class="filling">Rating : {{doctor.rating}}</p>
+                    <p class="filling">Locality : {{doctor.locality}}</p>
+                    <p class="filling">City : {{doctor.city}} <hr> </p>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div>
+                <form action="/relevent" method="post">
+                    {% csrf_token %}
+                    <input type="text" id="releventID" name="releventID" placeholder="which Doctor is Relevent for You" Required>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+        
+        <script src="" async defer></script>
+    </body>
+</html>
